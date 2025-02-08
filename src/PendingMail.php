@@ -143,12 +143,18 @@ class PendingMail
      */
     protected function fill(MailableInterface $mailable): MailableInterface
     {
-        return tap($mailable->to($this->to)
+        return $this->tap($mailable->to($this->to)
             ->cc($this->cc)
             ->bcc($this->bcc), function (MailableInterface $mailable) {
-                if (!empty($this->locale)) {
-                    $mailable->locale($this->locale);
-                }
-            });
+            if (!empty($this->locale)) {
+                $mailable->locale($this->locale);
+            }
+        });
+    }
+
+    private function tap(MailableInterface $bcc, \Closure $param): MailableInterface
+    {
+        $param($bcc);
+        return $bcc;
     }
 }
