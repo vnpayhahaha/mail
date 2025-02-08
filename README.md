@@ -27,8 +27,13 @@
 ### 安装
 
 ```shell script
-composer require hyperf-ext/mail
+composer require hyperf3-ext/mail
 ```
+build(deps): 更新 Hyperf框架相关依赖版本
+
+- 将 Hyperf 相关包的版本从 ~2.2.0 升级到 ^3.1
+- 更新 php-cs-fixer 依赖到 ^3.0
+- 将 mockery/mockery依赖更新到 ^1.0
 
 #### 发布配置
 
