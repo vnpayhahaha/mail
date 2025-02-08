@@ -323,7 +323,7 @@ abstract class Mailable implements MailableInterface, CompressInterface, UnCompr
     {
         $mailable = clone $this;
 
-        call([$mailable, 'build']);
+        $mailable->build();
 
         $data = $mailable->buildViewData();
         $data['message'] = $message;
