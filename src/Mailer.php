@@ -11,7 +11,7 @@ declare(strict_types=1);
 namespace Hyperf3Ext\Mail;
 
 use Hyperf\Macroable\Macroable;
-use Hyperf3Ext\Contract\ShouldQueue;
+use HyperfExt\Contract\ShouldQueue;
 use Hyperf3Ext\Mail\Concerns\PendingMailable;
 use Hyperf3Ext\Mail\Contracts\MailableInterface;
 use Hyperf3Ext\Mail\Contracts\MailerInterface;

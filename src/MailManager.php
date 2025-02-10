@@ -14,7 +14,7 @@ use Hyperf\Collection\Arr;
 use Hyperf\Contract\ConfigInterface;
 use Hyperf\Logger\LoggerFactory;
 use Hyperf\Stringable\Str;
-use Hyperf3Ext\Contract\ShouldQueue;
+use HyperfExt\Contract\ShouldQueue;
 use Hyperf3Ext\Mail\Concerns\PendingMailable;
 use Hyperf3Ext\Mail\Contracts\MailableInterface;
 use Hyperf3Ext\Mail\Contracts\MailerInterface;

@@ -10,7 +10,7 @@ declare(strict_types=1);
  */
 namespace %NAMESPACE%;
 
-use Hyperf3Ext\Contract\ShouldQueue;
+use HyperfExt\Contract\ShouldQueue;
 use Hyperf3Ext\Mail\Mailable;
 
 class %CLASS% extends Mailable implements ShouldQueue
