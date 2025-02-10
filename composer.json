@@ -47,7 +47,8 @@
         "hyperf/framework": "^3.1",
         "hyperf/translation": "^3.1",
         "hyperf/view": "^3.1",
-        "pudongping/hyperf-wise-locksmith": "^3.0"
+        "pudongping/hyperf-wise-locksmith": "^3.0",
+        "symfony/mime": "^7.2"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^3.0",
