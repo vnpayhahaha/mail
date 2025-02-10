@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 /**
- * This file is part of hyperf-ext/mail.
+ * This file is part of hyperf3-ext/mail.
  *
- * @link     https://github.com/hyperf-ext/mail
+ * @link     https://github.com/hyperf3-ext/mail
  * @contact  eric@zhu.email
- * @license  https://github.com/hyperf-ext/mail/blob/master/LICENSE
+ * @license  https://github.com/hyperf3-ext/mail/blob/master/LICENSE
  */
-namespace HyperfExt\Mail;
+namespace Hyperf3Ext\Mail;
 
 use Hyperf\AsyncQueue\Job;
 use Hyperf\Context\ApplicationContext;
-use HyperfExt\Mail\Contracts\MailableInterface;
-use HyperfExt\Mail\Contracts\MailManagerInterface;
+use Hyperf3Ext\Mail\Contracts\MailableInterface;
+use Hyperf3Ext\Mail\Contracts\MailManagerInterface;
 
 class QueuedMailableJob extends Job
 {
@@ -21,7 +21,7 @@ class QueuedMailableJob extends Job
     {
     }
 
-    public function handle()
+    public function handle(): void
     {
         $this->mailable->send(ApplicationContext::getContainer()->get(MailManagerInterface::class));
     }

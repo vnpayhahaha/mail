@@ -24,12 +24,12 @@
     ],
     "autoload": {
         "psr-4": {
-            "HyperfExt\\Mail\\": "src/"
+            "Hyperf3Ext\\Mail\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "HyperfTest\\Mail\\": "tests"
+            "Hyperf3Test\\Mail\\": "tests"
         }
     },
     "require": {
@@ -78,7 +78,7 @@
     },
     "extra": {
         "hyperf": {
-            "config": "HyperfExt\\Mail\\ConfigProvider"
+            "config": "Hyperf3Ext\\Mail\\ConfigProvider"
         }
     }
 }

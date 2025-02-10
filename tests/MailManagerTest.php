@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 /**
- * This file is part of hyperf-ext/mail.
+ * This file is part of hyperf3-ext/mail.
  *
- * @link     https://github.com/hyperf-ext/mail
+ * @link     https://github.com/hyperf3-ext/mail
  * @contact  eric@zhu.email
- * @license  https://github.com/hyperf-ext/mail/blob/master/LICENSE
+ * @license  https://github.com/hyperf3-ext/mail/blob/master/LICENSE
  */
 namespace HyperfTest\Mail;
 
 use Hyperf\Config\Config;
 use Hyperf\Contract\ConfigInterface;
-use HyperfExt\Mail\Contracts\MailManagerInterface;
-use HyperfExt\Mail\MailManager;
+use Hyperf3Ext\Mail\Contracts\MailManagerInterface;
+use Hyperf3Ext\Mail\MailManager;
 use Mockery as m;
 use PHPUnit\Framework\TestCase;
 use Psr\Container\ContainerInterface;

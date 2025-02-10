@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 /**
- * This file is part of hyperf-ext/mail.
+ * This file is part of hyperf3-ext/mail.
  *
- * @link     https://github.com/hyperf-ext/mail
+ * @link     https://github.com/hyperf3-ext/mail
  * @contact  eric@zhu.email
- * @license  https://github.com/hyperf-ext/mail/blob/master/LICENSE
+ * @license  https://github.com/hyperf3-ext/mail/blob/master/LICENSE
  */
-namespace HyperfExt\Mail;
+namespace Hyperf3Ext\Mail;
 
 use Closure;
 use Hyperf\AsyncQueue\Driver\DriverFactory;
@@ -22,10 +22,10 @@ use Hyperf\Filesystem\FilesystemFactory;
 use Hyperf\Stringable\Str;
 use Hyperf\Support\Traits\ForwardsCalls;
 use Hyperf\View\RenderInterface;
-use HyperfExt\Contract\HasMailAddress;
-use HyperfExt\Mail\Contracts\MailableInterface;
-use HyperfExt\Mail\Contracts\MailerInterface;
-use HyperfExt\Mail\Contracts\MailManagerInterface;
+use Hyperf3Ext\Contract\HasMailAddress;
+use Hyperf3Ext\Mail\Contracts\MailableInterface;
+use Hyperf3Ext\Mail\Contracts\MailerInterface;
+use Hyperf3Ext\Mail\Contracts\MailManagerInterface;
 use ReflectionClass;
 use ReflectionProperty;
 

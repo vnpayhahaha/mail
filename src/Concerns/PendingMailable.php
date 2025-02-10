@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 /**
- * This file is part of hyperf-ext/mail.
+ * This file is part of hyperf3-ext/mail.
  *
- * @link     https://github.com/hyperf-ext/mail
+ * @link     https://github.com/hyperf3-ext/mail
  * @contact  eric@zhu.email
- * @license  https://github.com/hyperf-ext/mail/blob/master/LICENSE
+ * @license  https://github.com/hyperf3-ext/mail/blob/master/LICENSE
  */
-namespace HyperfExt\Mail\Concerns;
+namespace Hyperf3Ext\Mail\Concerns;
 
 use Hyperf\Collection\Collection;
-use HyperfExt\Contract\HasMailAddress;
-use HyperfExt\Mail\PendingMail;
+use Hyperf3Ext\Contract\HasMailAddress;
+use Hyperf3Ext\Mail\PendingMail;
 
 trait PendingMailable
 {

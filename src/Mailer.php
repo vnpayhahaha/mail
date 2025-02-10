@@ -2,21 +2,21 @@
 
 declare(strict_types=1);
 /**
- * This file is part of hyperf-ext/mail.
+ * This file is part of hyperf3-ext/mail.
  *
- * @link     https://github.com/hyperf-ext/mail
+ * @link     https://github.com/hyperf3-ext/mail
  * @contact  eric@zhu.email
- * @license  https://github.com/hyperf-ext/mail/blob/master/LICENSE
+ * @license  https://github.com/hyperf3-ext/mail/blob/master/LICENSE
  */
-namespace HyperfExt\Mail;
+namespace Hyperf3Ext\Mail;
 
 use Hyperf\Macroable\Macroable;
-use HyperfExt\Contract\ShouldQueue;
-use HyperfExt\Mail\Concerns\PendingMailable;
-use HyperfExt\Mail\Contracts\MailableInterface;
-use HyperfExt\Mail\Contracts\MailerInterface;
-use HyperfExt\Mail\Events\MailMessageSending;
-use HyperfExt\Mail\Events\MailMessageSent;
+use Hyperf3Ext\Contract\ShouldQueue;
+use Hyperf3Ext\Mail\Concerns\PendingMailable;
+use Hyperf3Ext\Mail\Contracts\MailableInterface;
+use Hyperf3Ext\Mail\Contracts\MailerInterface;
+use Hyperf3Ext\Mail\Events\MailMessageSending;
+use Hyperf3Ext\Mail\Events\MailMessageSent;
 use Psr\Container\ContainerInterface;
 use Psr\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\Mailer\MailerInterface as SymfonyMailerInterface;

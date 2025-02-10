@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 /**
- * This file is part of hyperf-ext/mail.
+ * This file is part of hyperf3-ext/mail.
  *
- * @link     https://github.com/hyperf-ext/mail
+ * @link     https://github.com/hyperf3-ext/mail
  * @contact  eric@zhu.email
- * @license  https://github.com/hyperf-ext/mail/blob/master/LICENSE
+ * @license  https://github.com/hyperf3-ext/mail/blob/master/LICENSE
  */
 namespace HyperfTest\Mail;
 
 use Hyperf\Utils\ApplicationContext;
-use HyperfExt\Mail\Contracts\MailableInterface;
-use HyperfExt\Mail\Events\MailMessageSending;
-use HyperfExt\Mail\Events\MailMessageSent;
-use HyperfExt\Mail\Mailer;
+use Hyperf3Ext\Mail\Contracts\MailableInterface;
+use Hyperf3Ext\Mail\Events\MailMessageSending;
+use Hyperf3Ext\Mail\Events\MailMessageSent;
+use Hyperf3Ext\Mail\Mailer;
 use Mockery as m;
 use PHPUnit\Framework\TestCase;
 use Psr\EventDispatcher\EventDispatcherInterface;

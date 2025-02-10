@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 /**
- * This file is part of hyperf-ext/mail.
+ * This file is part of hyperf3-ext/mail.
  *
- * @link     https://github.com/hyperf-ext/mail
+ * @link     https://github.com/hyperf3-ext/mail
  * @contact  eric@zhu.email
- * @license  https://github.com/hyperf-ext/mail/blob/master/LICENSE
+ * @license  https://github.com/hyperf3-ext/mail/blob/master/LICENSE
  */
-namespace HyperfExt\Mail;
+namespace Hyperf3Ext\Mail;
 
-use HyperfExt\Mail\Commands\GenMailCommand;
-use HyperfExt\Mail\Contracts\MailManagerInterface;
+use Hyperf3Ext\Mail\Commands\GenMailCommand;
+use Hyperf3Ext\Mail\Contracts\MailManagerInterface;
 
 class ConfigProvider
 {
@@ -29,7 +29,7 @@ class ConfigProvider
             'publish' => [
                 [
                     'id' => 'config',
-                    'description' => 'The config for hyperf-ext/mail.',
+                    'description' => 'The config for hyperf3-ext/mail.',
                     'source' => __DIR__ . '/../publish/mail.php',
                     'destination' => BASE_PATH . '/config/autoload/mail.php',
                 ],

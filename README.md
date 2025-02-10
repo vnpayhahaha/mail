@@ -38,7 +38,7 @@ build(deps): 更新 Hyperf框架相关依赖版本
 #### 发布配置
 
 ```shell script
-php bin/hyperf.php vendor:publish hyperf-ext/mail
+php bin/hyperf.php vendor:publish hyperf3-ext/mail
 ```
 
 发布的配置文件中配置的每个邮件程序都可能有自己的「传输方式」和配置选项，这将允许你的应用程序使用不同的邮件服务来发送特定的邮件。例如，你的应用程序可能使用 Postmark 发送事务性邮件，而使用 AWS SES 发送批量邮件。
@@ -60,7 +60,7 @@ composer require hyperf/guzzle
 [
     // ...
     'mailgun' => [
-        'transport' => \HyperfExt\Mail\Transport\MailgunTransport::class,
+        'transport' => \Hyperf3Ext\Mail\Transport\MailgunTransport::class,
         'options' => [
             'domain' => env('MAIL_MAILGUN_DOMAIN'),
             'key' => env('MAIL_MAILGUN_KEY'),
@@ -87,7 +87,7 @@ composer require wildbit/swiftmailer-postmark
 [
     // ...
     'postmark' => [
-        'transport' => \HyperfExt\Mail\Transport\PostmarkTransport::class,
+        'transport' => \Hyperf3Ext\Mail\Transport\PostmarkTransport::class,
         'options' => [
             'token' => env('MAIL_POSTMARK_TOKEN'),
         ],
@@ -110,7 +110,7 @@ composer require wildbit/swiftmailer-postmark
 [
     // ...
     'aws_ses' => [
-        'transport' => \HyperfExt\Mail\Transport\AwsSesTransport::class,
+        'transport' => \Hyperf3Ext\Mail\Transport\AwsSesTransport::class,
         'options' => [
             'credentials' => [
                 'key' => env('MAIL_AWS_SES_ACCESS_KEY_ID'),
@@ -129,7 +129,7 @@ composer require wildbit/swiftmailer-postmark
 [
     // ...
     'aws_ses' => [
-        'transport' => \HyperfExt\Mail\Transport\AwsSesTransport::class,
+        'transport' => \Hyperf3Ext\Mail\Transport\AwsSesTransport::class,
         'options' => [
             'credentials' => [
                 'key' => env('MAIL_AWS_SES_ACCESS_KEY_ID'),
@@ -166,7 +166,7 @@ composer require wildbit/swiftmailer-postmark
 [
     // ...
     'aliyun_dm' => [
-        'transport' => \HyperfExt\Mail\Transport\AliyunDmTransport::class,
+        'transport' => \Hyperf3Ext\Mail\Transport\AliyunDmTransport::class,
         'options' => [
             'access_key_id' => env('MAIL_ALIYUN_DM_ACCESS_KEY_ID'),
             'access_secret' => env('MAIL_ALIYUN_DM_ACCESS_SECRET'),
@@ -264,7 +264,7 @@ public function build()
 namespace App\Mail;
 
 use App\Models\Order;
-use HyperfExt\Mail\Mailable;
+use Hyperf3Ext\Mail\Mailable;
 
 class OrderShipped extends Mailable
 {
@@ -316,7 +316,7 @@ class OrderShipped extends Mailable
 namespace App\Mail;
 
 use App\Model\Order;
-use HyperfExt\Mail\Mailable;
+use Hyperf3Ext\Mail\Mailable;
 
 class OrderShipped extends Mailable
 {
@@ -508,7 +508,7 @@ public function build()
 
 ## 发送邮件
 
-若要发送邮件，使用 `Mail` 辅助类的 `to` 方法。`to` 方法接受邮件地址、邮件地址数组以及实现 `HyperfExt/Contract/HasMailAddress` 接口的实例或实例集合。如果传递一个邮件地址数组，那么它必须是包含字符串地址的一位数组或是包含具有 `email` 和 `name` 键的数组的二维数组，mailer 在设置收件人时会自动设置。一旦指定了收件人，就可以将 `Mailable` 类实例传递给 `send` 方法：
+若要发送邮件，使用 `Mail` 辅助类的 `to` 方法。`to` 方法接受邮件地址、邮件地址数组以及实现 `Hyperf3Ext/Contract/HasMailAddress` 接口的实例或实例集合。如果传递一个邮件地址数组，那么它必须是包含字符串地址的一位数组或是包含具有 `email` 和 `name` 键的数组的二维数组，mailer 在设置收件人时会自动设置。一旦指定了收件人，就可以将 `Mailable` 类实例传递给 `send` 方法：
 
 ```php
 <?php
@@ -519,7 +519,7 @@ use App\Mail\OrderShipped;
 use App\Model\Order;
 use Hyperf\HttpServer\Contract\RequestInterface;
 use Hyperf\HttpServer\Contract\ResponseInterface;
-use HyperfExt\Mail\Mail;
+use Hyperf3Ext\Mail\Mail;
 
 class OrderController
 {
@@ -540,7 +540,7 @@ class OrderController
 在发送消息时不止可以指定收件人。还可以通过链式调用「to」、「cc」、「bcc」一次性指定抄送和密送收件人：
 
 ```php
-use HyperfExt\Mail\Mail;
+use Hyperf3Ext\Mail\Mail;
 
 Mail::to($request->user())
     ->cc($moreUsers)
@@ -603,11 +603,11 @@ Mail::to($request->user())
 
 #### 默认使用队列
 
-如果你希望你的邮件类始终使用队列，您可以给邮件类 `HyperfExt\Contract\ShouldQueue` 接口，现在即使你调用了 `send` 方法，邮件依旧使用队列的方式发送。另外，如果需要将邮件推送到指定队列，可以设置在邮件类中设置 `queue` 属性。
+如果你希望你的邮件类始终使用队列，您可以给邮件类 `Hyperf3Ext\Contract\ShouldQueue` 接口，现在即使你调用了 `send` 方法，邮件依旧使用队列的方式发送。另外，如果需要将邮件推送到指定队列，可以设置在邮件类中设置 `queue` 属性。
 
 ```php
-use HyperfExt\Contract\ShouldQueue;
-use HyperfExt\Mail\Mailable;
+use Hyperf3Ext\Contract\ShouldQueue;
+use Hyperf3Ext\Mail\Mailable;
 
 class OrderShipped extends Mailable implements ShouldQueue
 {
@@ -661,7 +661,7 @@ Mail::to($request->user())->locale('es')->send(
 
 ### 用户的个性化翻译
 
-有时，应用程序会为每个用户存储不同的区域设置。通过在一个或多个模型上实现 `HyperfExt/Contract/HasLocalePreference` 接口，可以指示组件在发送邮件时使用此存储的区域设置:
+有时，应用程序会为每个用户存储不同的区域设置。通过在一个或多个模型上实现 `Hyperf3Ext/Contract/HasLocalePreference` 接口，可以指示组件在发送邮件时使用此存储的区域设置:
 
 ```php
 class User extends Model

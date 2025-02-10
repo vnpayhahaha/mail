@@ -2,23 +2,23 @@
 
 declare(strict_types=1);
 /**
- * This file is part of hyperf-ext/mail.
+ * This file is part of hyperf3-ext/mail.
  *
- * @link     https://github.com/hyperf-ext/mail
+ * @link     https://github.com/hyperf3-ext/mail
  * @contact  eric@zhu.email
- * @license  https://github.com/hyperf-ext/mail/blob/master/LICENSE
+ * @license  https://github.com/hyperf3-ext/mail/blob/master/LICENSE
  */
-namespace HyperfExt\Mail;
+namespace Hyperf3Ext\Mail;
 
 use Hyperf\Collection\Arr;
 use Hyperf\Contract\ConfigInterface;
 use Hyperf\Logger\LoggerFactory;
 use Hyperf\Stringable\Str;
-use HyperfExt\Contract\ShouldQueue;
-use HyperfExt\Mail\Concerns\PendingMailable;
-use HyperfExt\Mail\Contracts\MailableInterface;
-use HyperfExt\Mail\Contracts\MailerInterface;
-use HyperfExt\Mail\Contracts\MailManagerInterface;
+use Hyperf3Ext\Contract\ShouldQueue;
+use Hyperf3Ext\Mail\Concerns\PendingMailable;
+use Hyperf3Ext\Mail\Contracts\MailableInterface;
+use Hyperf3Ext\Mail\Contracts\MailerInterface;
+use Hyperf3Ext\Mail\Contracts\MailManagerInterface;
 use InvalidArgumentException;
 use Psr\Container\ContainerInterface;
 use Symfony\Component\Mailer\Mailer as SymfonyMailer;
