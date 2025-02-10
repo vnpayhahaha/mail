@@ -24,11 +24,7 @@ class QueuedMailableJob extends Job
 
     public function __construct(public MailableInterface $mailable)
     {
-        // 判断 $this->locker是否初始化，如果未初始化，则初始化
-        if (!$this->locker instanceof Locker) {
-            $this->locker = ApplicationContext::getContainer()->get(Locker::class);
-        }
-
+        $this->locker = ApplicationContext::getContainer()->get(Locker::class);
     }
 
     public function handle(): void
