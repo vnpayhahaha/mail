@@ -19,7 +19,6 @@ use function Hyperf\Config\config;
 class QueuedMailableJob extends Job
 {
     protected string $queue;
-
     public function __construct(public MailableInterface $mailable)
     {
         $this->queue = (property_exists($mailable, 'queue') ? $mailable->queue : array_key_first(config('async_queue')));
