@@ -8,7 +8,6 @@ declare(strict_types=1);
  * @contact  eric@zhu.email
  * @license  https://github.com/hyperf3-ext/mail/blob/master/LICENSE
  */
-
 namespace Hyperf3Ext\Mail;
 
 use Hyperf\AsyncQueue\Job;
