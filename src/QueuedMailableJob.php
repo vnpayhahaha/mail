@@ -30,8 +30,9 @@ class QueuedMailableJob extends Job
     public function handle(): void
     {
         $mailable = $this->mailable;
+        $random = random_int(1, 100000);
         try {
-            $this->locker->redisLock('email_send_lock', function () use ($mailable) {
+            $this->locker->redisLock('email_send_lock'.$random, function () use ($mailable) {
                 $mailable->send(ApplicationContext::getContainer()->get(MailManagerInterface::class));
             }, 2);
         } catch (MutexException|\Throwable $e) {
