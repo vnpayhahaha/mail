@@ -13,7 +13,6 @@ namespace Hyperf3Ext\Mail;
 
 use Hyperf\AsyncQueue\Job;
 use Hyperf\Context\ApplicationContext;
-use Hyperf\Di\Annotation\Inject;
 use Hyperf3Ext\Mail\Contracts\MailableInterface;
 use Hyperf3Ext\Mail\Contracts\MailManagerInterface;
 use Pudongping\HyperfWiseLocksmith\Locker;
@@ -21,11 +20,15 @@ use Pudongping\WiseLocksmith\Exception\MutexException;
 
 class QueuedMailableJob extends Job
 {
-    #[Inject]
     private Locker $locker;
 
     public function __construct(public MailableInterface $mailable)
     {
+        // 判断 $this->locker是否初始化，如果未初始化，则初始化
+        if (!$this->locker instanceof Locker) {
+            $this->locker = ApplicationContext::getContainer()->get(Locker::class);
+        }
+
     }
 
     public function handle(): void
