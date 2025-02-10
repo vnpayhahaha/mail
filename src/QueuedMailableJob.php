@@ -8,10 +8,12 @@ declare(strict_types=1);
  * @contact  eric@zhu.email
  * @license  https://github.com/hyperf3-ext/mail/blob/master/LICENSE
  */
+
 namespace Hyperf3Ext\Mail;
 
 use Hyperf\AsyncQueue\Job;
 use Hyperf\Context\ApplicationContext;
+use Hyperf\Di\Annotation\Inject;
 use Hyperf3Ext\Mail\Contracts\MailableInterface;
 use Hyperf3Ext\Mail\Contracts\MailManagerInterface;
 use Pudongping\HyperfWiseLocksmith\Locker;
@@ -19,9 +21,10 @@ use Pudongping\WiseLocksmith\Exception\MutexException;
 
 class QueuedMailableJob extends Job
 {
+    #[Inject]
+    private Locker $locker;
 
-    public function __construct(public MailableInterface $mailable,
-                                private Locker           $locker)
+    public function __construct(public MailableInterface $mailable)
     {
     }
 
