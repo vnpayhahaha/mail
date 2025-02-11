@@ -20,21 +20,18 @@ use Pudongping\WiseLocksmith\Exception\MutexException;
 
 class QueuedMailableJob extends Job
 {
-    private Locker $locker;
-
     public function __construct(public MailableInterface $mailable)
     {
-        $this->locker = ApplicationContext::getContainer()->get(Locker::class);
     }
 
     public function handle(): void
     {
         $mailable = $this->mailable;
-        $random = random_int(1, 100000);
         try {
-            $this->locker->redisLock('email_send_lock'.$random, function () use ($mailable) {
+            $locker = ApplicationContext::getContainer()->get(Locker::class);
+            $locker->redisLock('email_send_lock', function () use ($mailable) {
                 $mailable->send(ApplicationContext::getContainer()->get(MailManagerInterface::class));
-            }, 2);
+            }, 3);
         } catch (MutexException|\Throwable $e) {
             var_dump('=========== Email Throwable =============', $e->getMessage());
         }
