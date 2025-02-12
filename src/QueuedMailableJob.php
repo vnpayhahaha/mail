@@ -30,10 +30,10 @@ class QueuedMailableJob extends Job
         try {
             $locker = ApplicationContext::getContainer()->get(Locker::class);
             $locker->redisLock('email_send_lock', function () use ($mailable) {
-                $mailable->send(ApplicationContext::getContainer()->get(MailManagerInterface::class));
+                $mailable->send(ApplicationContext::getContainer()->get(MailManagerInterface::class)->get($mailable->mailer));
             }, 3);
         } catch (MutexException|\Throwable $e) {
-            var_dump('=========== Email Throwable =============', $e->getMessage());
+            var_dump('=========== Email Throwable =============', $e->getFile(), $e->getLine(), $e->getMessage());
         }
 
     }
