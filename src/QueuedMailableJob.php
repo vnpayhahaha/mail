@@ -22,6 +22,9 @@ class QueuedMailableJob extends Job
 {
     public function __construct(public MailableInterface $mailable)
     {
+        if(ApplicationContext::getContainer()->get(Locker::class) === null){
+            ApplicationContext::getContainer()->set(Locker::class, new Locker());
+        }
     }
 
     public function handle(): void
