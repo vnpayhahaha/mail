@@ -27,6 +27,7 @@ class QueuedMailableJob extends Job
         try {
             $this->mailable->send(ApplicationContext::getContainer()->get(MailManagerInterface::class));
         } catch (\Throwable $e) {
+            var_dump('=========== Email Throwable $e=============', $e);
             var_dump('=========== Email Throwable =============', $e->getFile(), $e->getLine(), $e->getMessage());
         }
 
