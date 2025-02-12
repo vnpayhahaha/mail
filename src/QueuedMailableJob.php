@@ -15,29 +15,15 @@ use Hyperf\AsyncQueue\Job;
 use Hyperf\Context\ApplicationContext;
 use Hyperf3Ext\Mail\Contracts\MailableInterface;
 use Hyperf3Ext\Mail\Contracts\MailManagerInterface;
-use Pudongping\HyperfWiseLocksmith\Locker;
-use Pudongping\WiseLocksmith\Exception\MutexException;
 
 class QueuedMailableJob extends Job
 {
     public function __construct(public MailableInterface $mailable)
     {
-        if(ApplicationContext::getContainer()->get(Locker::class) === null){
-            ApplicationContext::getContainer()->set(Locker::class, new Locker());
-        }
     }
 
     public function handle(): void
     {
-        $mailable = $this->mailable;
-        try {
-            $locker = ApplicationContext::getContainer()->get(Locker::class);
-            $locker->redisLock('email_send_lock', function () use ($mailable) {
-                $mailable->send(ApplicationContext::getContainer()->get(MailManagerInterface::class));
-            }, 3);
-        } catch (MutexException|\Throwable $e) {
-            var_dump('=========== Email Throwable =============', $e->getMessage());
-        }
-
+        $this->mailable->send(ApplicationContext::getContainer()->get(MailManagerInterface::class));
     }
 }
